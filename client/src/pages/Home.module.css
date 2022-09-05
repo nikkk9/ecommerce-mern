@@ -1,0 +1,11 @@
+.product {
+  padding: 2rem;
+}
+.product h1 {
+  text-align: center;
+  color: crimson;
+  max-width: 40rem;
+  border-bottom: 1px solid rgb(220, 20, 60, 0.5);
+  padding-bottom: 0.5rem;
+  margin: 0 auto;
+}

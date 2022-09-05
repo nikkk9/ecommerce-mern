@@ -1,0 +1,84 @@
+.footer {
+  background-color: rgb(32, 41, 48);
+}
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 2rem;
+}
+.contact h1 {
+  letter-spacing: 0.1rem;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: rgb(0, 186, 186);
+}
+
+.form {
+  margin-top: 1rem;
+}
+
+.form button {
+  padding: 0.6rem 1rem;
+  background-color: rgb(0, 110, 110);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 0.2rem;
+  letter-spacing: 0.1rem;
+  margin-top: 2rem;
+  border: 2px solid rgb(0, 110, 110);
+  transition: 0.3s ease;
+  color: white;
+}
+.form button:hover {
+  transform: scale(1.05);
+  background: none;
+  border-color: teal;
+}
+
+.inputContainer {
+  width: 20rem;
+}
+.inputContainer input {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  margin-top: 1rem;
+  background: none;
+  border-bottom: 1px solid rgb(0, 0, 0, 0.5);
+  color: aliceblue;
+}
+
+.social h1 {
+  color: rgb(0, 186, 186);
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+}
+.socialLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  padding: 0 5rem;
+}
+.socialLinks a {
+  margin-right: 1rem;
+}
+
+.socialLinks a .muiIcons {
+  font-size: 3rem;
+  color: aliceblue;
+}
+
+.footer p {
+  text-align: center;
+  margin-top: 2rem;
+  width: 100%;
+  border-top: 1px solid rgb(23, 22, 22);
+  padding: 0.9rem 0;
+  color: aliceblue;
+}

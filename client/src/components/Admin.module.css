@@ -1,0 +1,69 @@
+.admin {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  background-image: linear-gradient(
+    to right top,
+    #09459e,
+    #0078ca,
+    #00a3b9,
+    #00c678,
+    #a0dc1a
+  );
+}
+.container {
+  flex: 1;
+  overflow: scroll;
+}
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+::-webkit-scrollbar-thumb {
+  background-color: teal;
+}
+::-webkit-scrollbar-track {
+  background-color: rgb(67, 67, 67);
+}
+.container h1 {
+  text-align: center;
+  position: sticky;
+  top: 0rem;
+  z-index: 1;
+  background-color: crimson;
+  padding: 0.5rem 0;
+  color: rgb(225, 225, 225);
+}
+.container table {
+  width: 100%;
+  /* text-align: left; */
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.container th {
+  color: rgb(225, 225, 225);
+}
+.container th,
+.container td {
+  padding: 1rem;
+  border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+}
+.container td img {
+  height: 3rem;
+  width: 3rem;
+  object-fit: contain;
+}
+
+.container button {
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  color: rgb(223, 240, 255);
+}
+.container button:nth-child(1) {
+  background-color: teal;
+}
+.container button:nth-child(2) {
+  background-color: crimson;
+}

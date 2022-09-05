@@ -1,0 +1,103 @@
+.container h2 {
+  color: aliceblue;
+  text-align: center;
+  background-color: teal;
+  padding: 0.7rem 0;
+  letter-spacing: 0.1rem;
+}
+.wrapper {
+  display: flex;
+  margin-bottom: 2rem;
+}
+.left {
+  margin-top: 2rem;
+  flex: 1;
+}
+.right {
+  flex: 1;
+}
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.image {
+  height: 10rem;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image img {
+  height: 80%;
+  width: 80%;
+}
+
+.productHeading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+.details p {
+  margin: 0.5rem 0;
+}
+.details p span {
+  width: 5rem;
+  display: inline-block;
+}
+.value {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.value h3 {
+  text-align: center;
+}
+
+.value p {
+  margin-top: 1rem;
+}
+
+.add {
+  margin-top: 1rem;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.rightWrapper {
+  margin-top: 5rem;
+  padding: 2rem 4rem;
+  /* border: 2px solid gray; */
+  border-radius: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: teal;
+}
+.rightWrapper span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: aliceblue;
+}
+.rightWrapper p {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  color: aliceblue;
+}
+.rightWrapper button {
+  padding: 0.8rem 1rem;
+  border: none;
+  background-color: crimson;
+  color: aliceblue;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: 0.5s ease;
+}
+.rightWrapper button:hover {
+  background-color: rgb(255, 0, 51);
+}
