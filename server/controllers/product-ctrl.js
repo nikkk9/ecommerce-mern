@@ -70,15 +70,23 @@ export const getAllProducts = async (req, res) => {
     const totalProduct = await Product.countDocuments();
     const features = new ApiFeatures(Product.find(), req.query)
       .search()
-      .filter()
-      .pagination(productPerPage);
+      .filter();
+    // .pagination(productPerPage);
 
     let products = await features.query;
+    let filteredProductsCount = products.length;
+
+    features.pagination(productPerPage);
+
+    // .clone() bcuz query was already executed!
+    products = await features.query.clone();
 
     if (!products) {
       return res.status(400).send("products are not found!");
     }
-    res.status(200).send({ products, totalProduct });
+    res
+      .status(200)
+      .json({ products, totalProduct, productPerPage, filteredProductsCount });
   } catch (error) {
     console.log(error);
   }

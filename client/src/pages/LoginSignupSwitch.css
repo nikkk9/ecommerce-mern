@@ -1,0 +1,12 @@
+.shiftToLeft {
+  transform: translateX(-130%);
+}
+.shiftToRight {
+  transform: translateX(100%);
+}
+.shiftToNeutral {
+  transform: translateX(0%);
+}
+.shiftToNeutralForm {
+  transform: translateX(0%);
+}

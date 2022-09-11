@@ -24,14 +24,17 @@ const userSchema = new mongoose.Schema(
       minLength: [4, "Password should be greater than 8 characters"],
     },
     avatar: {
-      public_id: {
-        type: String,
-        required: true,
-      },
-      url: {
-        type: String,
-        required: true,
-      },
+      type: String,
+      default:
+        "https://res.cloudinary.com/iamunknown/image/upload/v1662827528/dev/default-dp_iduqeo.jpg",
+      // public_id: {
+      //   type: String,
+      //   required: true,
+      // },
+      // url: {
+      //   type: String,
+      //   required: true,
+      // },
     },
     role: {
       type: String,

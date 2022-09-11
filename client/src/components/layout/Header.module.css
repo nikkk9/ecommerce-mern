@@ -24,14 +24,16 @@
   justify-content: center;
 }
 .search {
-  display: flex;
-  align-items: center;
   border: 1px solid gray;
   padding: 0 0.5rem;
   border-radius: 0.2rem;
   width: 30rem;
 }
-.search input {
+.form {
+  display: flex;
+  align-items: center;
+}
+.form input {
   padding: 0.7rem;
   outline: none;
   font-size: 1rem;
@@ -57,6 +59,7 @@
 }
 .right p {
   margin-right: 3rem;
+  cursor: pointer;
 }
 
 .cart {

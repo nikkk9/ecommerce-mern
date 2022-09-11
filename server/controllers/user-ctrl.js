@@ -2,10 +2,16 @@ import User from "../models/user-model.js";
 import bcrypt from "bcryptjs";
 import sendEmail from "../utils/send-email.js";
 import crypto from "crypto";
+import cloudinary from "cloudinary";
 
 // SIGNUP USER
 export const signupUser = async (req, res) => {
   try {
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+      folder: "avatars",
+      width: 150,
+      crop: "scale",
+    });
     const { name, email, password } = req.body;
     if (!name || !email || !password) {
       return res.status(400).send("please fill all the fields");
@@ -20,10 +26,7 @@ export const signupUser = async (req, res) => {
       name: name,
       email: email,
       password: hashPass,
-      avatar: {
-        public_id: "fakjsdh",
-        url: "urlpic",
-      },
+      avatar: "myCloud.secure_url",
     });
 
     // GENERATE TOKEN

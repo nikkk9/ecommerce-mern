@@ -11,6 +11,10 @@ connectDB();
 
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import bodyParser from "body-parser";
+import fileUpload from "express-fileupload";
+
+import cloudinary from "cloudinary";
 
 import userRoute from "./routes/user-route.js";
 import productRoute from "./routes/product-route.js";
@@ -21,11 +25,20 @@ import stripeRoute from "./routes/stripe-route.js";
 app.use(cors());
 app.use(express.json()); //it takes json file for testing api routes
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(fileUpload({ useTempFiles: true }));
 
 app.use(userRoute);
 app.use(productRoute);
 app.use(orderRoute);
 app.use(stripeRoute);
+
+// cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 // listen
 app.listen(port, (req, res) => {

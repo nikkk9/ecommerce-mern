@@ -1,15 +1,16 @@
 import React from "react";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
-import ProductDetails from "../components/product/ProductDetails";
-const Product = () => {
+import AllProducts from "../components/product/AllProducts";
+
+const Products = () => {
   return (
     <div>
       <Header />
-      <ProductDetails />
+      <AllProducts />
       <Footer />
     </div>
   );
 };
 
-export default Product;
+export default Products;
