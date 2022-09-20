@@ -11,19 +11,11 @@ const Footer = () => {
       <div className={cls.container}>
         <div className={cls.contact}>
           <h1>CONTACT US</h1>
-          <form action="" className={cls.form}>
-            <div className={cls.inputContainer}>
-              <input type="email" placeholder="Email" />
-            </div>
-            <div className={cls.inputContainer}>
-              <input type="text" placeholder="Message" />
-            </div>
-            <button
-              onClick={() => (window.location = "mailto:4coderss@gmail.com")}
-            >
-              SUBMIT
-            </button>
-          </form>
+          <div className={cls.contactBox}>
+            <a href="mailto:4coderss@gmail.com">
+              <button>Contact: Email Us</button>
+            </a>
+          </div>
         </div>
         <div className={cls.social}>
           <h1>CONNECT WITH US</h1>

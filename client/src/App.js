@@ -32,6 +32,7 @@ import UserList from "./components/admin/UserList";
 import UpdateUser from "./components/admin/UpdateUser";
 import ProductReviews from "./components/admin/ProductReviews";
 import NotFound from "./components/layout/NotFound";
+import AuthRoute from "./components/route/AuthRoute";
 
 const App = () => {
   const { authenticated, user } = useSelector((state) => state.user);
@@ -54,21 +55,22 @@ const App = () => {
   return (
     <div className="app">
       <Routes>
+        <Route path="/" element={<Home />} />
+
         <Route
-          path="/"
-          element={user ? <Home /> : <Navigate to="/login-signup" />}
+          path="/profile/update"
+          element={<AuthRoute Component={UpdateProfile} />}
         />
+
         <Route path="/login-signup" element={<LoginSignup />} />
         <Route path="/products" element={<Products />} />
         <Route path="/product/:id" element={<Product />} />
-        {user && <Route path="/profile" element={<Profile />} />}
-        <Route
-          path="/profile/update"
-          element={user ? <UpdateProfile /> : <Navigate to="/login-signup" />}
-        />
+        {authenticated && <Route path="/profile" element={<Profile />} />}
         <Route
           path="/password/update"
-          element={user ? <UpdatePass /> : <Navigate to="/login-signup" />}
+          element={
+            authenticated ? <UpdatePass /> : <Navigate to="/login-signup" />
+          }
         />
         <Route path="/password/forgot" element={<ForgotPass />} />
         <Route path="/reset-pass/:token" element={<ResetPass />} />
@@ -89,7 +91,7 @@ const App = () => {
         <Route path="/payment/success" element={<SuccessOrder />} />
         <Route path="/orders" element={<MyOrders />} />
         <Route path="/order/:id" element={<OrderDetails />} />
-        <Route path="/admin" element={<Admin />} />
+        {/* <Route path="/admin" element={<Admin />} /> */}
         {/* <Route
           path="/admin"
           element={
@@ -104,7 +106,7 @@ const App = () => {
         <Route path="/admin/users" element={<UserList />} />
         <Route path="/admin/user/:id" element={<UpdateUser />} />
         <Route path="/admin/reviews" element={<ProductReviews />} />
-        <Route element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

@@ -6,10 +6,16 @@
   height: 100vh;
 }
 .notFound h1 {
-  margin: 1rem 0;
+  color: red;
 }
-.notFound a{
-    padding: 0.7rem;
-    background-color: rgb(36, 36, 36);
-    color: aliceblue;
+.notFound a {
+  padding: 0.8rem;
+  background-color: rgb(36, 36, 36);
+  color: aliceblue;
+  text-decoration: none;
+  width: 7rem;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  border-radius: 0.2rem;
 }
