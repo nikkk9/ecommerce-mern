@@ -21,20 +21,17 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, "Please Enter Your Password"],
-      minLength: [4, "Password should be greater than 8 characters"],
+      minLength: [4, "Password should be atleast 4 characters"],
     },
     avatar: {
-      type: String,
-      default:
-        "https://res.cloudinary.com/iamunknown/image/upload/v1662827528/dev/default-dp_iduqeo.jpg",
-      // public_id: {
-      //   type: String,
-      //   required: true,
-      // },
-      // url: {
-      //   type: String,
-      //   required: true,
-      // },
+      public_id: {
+        type: String,
+        required: true,
+      },
+      url: {
+        type: String,
+        required: true,
+      },
     },
     role: {
       type: String,

@@ -12,7 +12,6 @@ import {
   signupUser,
   updatePass,
   updateProfile,
-  updateUserProfile,
   updateUserRole,
 } from "../controllers/user-ctrl.js";
 import { authRole, authToken } from "../middlewares/auth.js";
@@ -45,13 +44,6 @@ router.put(
   authToken,
   authRole("admin"),
   updateUserRole
-);
-
-router.put(
-  "/update-user-profile/:id",
-  authToken,
-  authRole("admin"),
-  updateUserProfile
 );
 
 router.delete(

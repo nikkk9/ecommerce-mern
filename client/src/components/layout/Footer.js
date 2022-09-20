@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./Footer.module.css";
+import cls from "./Footer.module.css";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -7,15 +7,15 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className={classes.footer}>
-      <div className={classes.container}>
-        <div className={classes.contact}>
+    <div className={cls.footer}>
+      <div className={cls.container}>
+        <div className={cls.contact}>
           <h1>CONTACT US</h1>
-          <form action="" className={classes.form}>
-            <div className={classes.inputContainer}>
+          <form action="" className={cls.form}>
+            <div className={cls.inputContainer}>
               <input type="email" placeholder="Email" />
             </div>
-            <div className={classes.inputContainer}>
+            <div className={cls.inputContainer}>
               <input type="text" placeholder="Message" />
             </div>
             <button
@@ -25,17 +25,17 @@ const Footer = () => {
             </button>
           </form>
         </div>
-        <div className={classes.social}>
+        <div className={cls.social}>
           <h1>CONNECT WITH US</h1>
-          <div className={classes.socialLinks}>
+          <div className={cls.socialLinks}>
             <Link to="https://github.com/nikkk9">
-              <GitHubIcon className={classes.muiIcons} />
+              <GitHubIcon className={cls.muiIcons} />
             </Link>
             <Link to="https://www.linkedin.com/in/nikk9/">
-              <LinkedInIcon className={classes.muiIcons} />
+              <LinkedInIcon className={cls.muiIcons} />
             </Link>
             <Link to="https://www.instagram.com/nikk.9/">
-              <InstagramIcon className={classes.muiIcons} />
+              <InstagramIcon className={cls.muiIcons} />
             </Link>
           </div>
         </div>

@@ -15,8 +15,8 @@
 }
 .details img {
   object-fit: contain;
-  height: 80%;
-  width: 80%;
+  height: 10rem;
+  width: 10rem;
   z-index: 2;
 }
 
@@ -32,10 +32,14 @@
 }
 .rating {
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
-.rating span {
-  margin-left: 0.3rem;
+.ratingCompo {
+  margin: 0;
+}
+.rating p {
+  margin-left: 0.5rem;
 }
 .icons {
   position: absolute;

@@ -1,10 +1,10 @@
 import React from "react";
-import classes from "./Loader.module.css";
+import cls from "./Loader.module.css";
 
 const Loader = () => {
   return (
-    <div className={classes.loader}>
-      <div className={classes.loading}></div>
+    <div className={cls.loader}>
+      <div className={cls.loading}></div>
     </div>
   );
 };

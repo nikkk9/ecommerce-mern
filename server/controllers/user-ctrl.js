@@ -9,8 +9,6 @@ export const signupUser = async (req, res) => {
   try {
     const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
       folder: "avatars",
-      width: 150,
-      crop: "scale",
     });
     const { name, email, password } = req.body;
     if (!name || !email || !password) {
@@ -26,7 +24,12 @@ export const signupUser = async (req, res) => {
       name: name,
       email: email,
       password: hashPass,
-      avatar: "myCloud.secure_url",
+      avatar: {
+        // public_id: "111",
+        // url: "https://upload.wikimedia.org/wikipedia/en/2/2f/Jerry_Mouse.png",
+        public_id: myCloud.public_id,
+        url: myCloud.secure_url,
+      },
     });
 
     // GENERATE TOKEN
@@ -90,7 +93,7 @@ export const logout = async (req, res) => {
   res.status(200).send("user logged out!");
 };
 
-// FORGOT PASSWORD MAIL
+// FORGOT PASSWORD
 export const forgotPass = async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
 
@@ -102,9 +105,14 @@ export const forgotPass = async (req, res) => {
 
   await user.save({ validateBeforeSave: false });
 
-  const resetPassUrl = `${req.protocol}://${req.get(
-    "host"
-  )}/reset-pass/${resetToken}`;
+  // for deploying
+  // const resetPassUrl = `${req.protocol}://${req.get(
+  //   "host"
+  // )}/reset-pass/${resetToken}`;
+
+  // if you change your url then you have to some changes in mail-msg that can help code to run better
+  // for testing
+  const resetPassUrl = `${process.env.CLIENT_URL}/reset-pass/${resetToken}`;
 
   const mailMsg = `<h1> Your reset password token is :- </h1> 
      <p> ${resetPassUrl} </p>
@@ -115,9 +123,7 @@ export const forgotPass = async (req, res) => {
       subject: `Password recovery mail from ecommerce app`,
       html: mailMsg,
     });
-    res
-      .status(200)
-      .send({ message: `email send to ${user.email} successfully!` });
+    res.status(200).send(`email send to ${user.email} successfully!`);
   } catch (error) {
     user.resetPasswordToken = undefined;
     user.resetPasswordExpire = undefined;
@@ -201,6 +207,11 @@ export const updatePass = async (req, res) => {
       return res.status(400).send("Old password is incorrect");
     }
 
+    if (req.body.newPassword.length <= 3) {
+      return res
+        .status(400)
+        .send("password should be greater than 3 charactes!");
+    }
     if (req.body.newPassword !== req.body.confirmPassword) {
       return res.status(400).send("password does not match");
     }
@@ -219,14 +230,42 @@ export const updatePass = async (req, res) => {
 // UPDATE YOUR PROFILE
 export const updateProfile = async (req, res) => {
   try {
-    const { name, email } = req.body;
+    // let { name, email, avatar } = req.body;
+    const newUserData = {
+      name: req.body.name,
+      email: req.body.email,
+    };
+    if (req.body.avatar) {
+      const user = await User.findById(req.user._id);
+
+      const imageId = user.avatar.public_id;
+
+      await cloudinary.v2.uploader.destroy(imageId);
+
+      // const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+      //   folder: "avatars",
+      //   width: 150,
+      //   // crop: "scale",
+      // });
+
+      // avatar = {
+      //   public_id: myCloud.public_id,
+      //   url: myCloud.secure_url,
+      // };
+      // newUserData.avatar = {
+      //   public_id: myCloud.public_id,
+      //   url: myCloud.secure_url,
+      // };
+    }
 
     const user = await User.findByIdAndUpdate(
       req.user._id,
-      {
-        name: name,
-        email: email,
-      },
+      // {
+      //   name,
+      //   email,
+      //   avatar,
+      // },
+      newUserData,
       {
         new: true,
       }
@@ -284,35 +323,7 @@ export const updateUserRole = async (req, res) => {
     if (!user) {
       return res.status(400).send("user role is not updated!");
     }
-    res.status(200).send(user);
-  } catch (error) {
-    console.log(error);
-  }
-};
 
-// UPDATE USER PROFILE (ADMIN)
-export const updateUserProfile = async (req, res) => {
-  try {
-    const { name, email } = req.body;
-
-    if (req.body.password) {
-      req.body.password = await bcrypt.hash(req.body.password, 12);
-    }
-
-    const user = await User.findByIdAndUpdate(
-      req.user._id,
-      {
-        name: name,
-        email: email,
-        password: req.body.password,
-      },
-      {
-        new: true,
-      }
-    );
-    if (!user) {
-      return res.status(400).send("user profile is not updated!");
-    }
     res.status(200).send(user);
   } catch (error) {
     console.log(error);
@@ -322,10 +333,12 @@ export const updateUserProfile = async (req, res) => {
 // DELETE USER PROFILE (ADMIN)
 export const deleteUserProfile = async (req, res) => {
   try {
-    const deletedUser = await User.findByIdAndDelete(req.params.id);
-    if (!deletedUser) {
+    const user = await User.findByIdAndDelete(req.params.id);
+    if (!user) {
       return res.status(400).send("user is not deleted!");
     }
+    const userPic = user.avatar.public_id;
+    await cloudinary.v2.uploader.destroy(userPic);
     res.status(200).send("user is deleted!");
   } catch (error) {
     console.log(error);

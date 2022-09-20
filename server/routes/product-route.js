@@ -4,6 +4,7 @@ import {
   createProduct,
   deleteProduct,
   deleteReview,
+  getAdminProducts,
   getAllProducts,
   getAllReviews,
   getProduct,
@@ -16,13 +17,15 @@ router.post("/create-product", authToken, authRole("admin"), createProduct);
 
 router.get("/products", getAllProducts);
 
-router.get("/product/:id", getProduct);
+router.get("/admin/products", authToken, authRole("admin"), getAdminProducts);
 
-router.put("/review", authToken, createAndUpdateReview);
+router.get("/product/:id", getProduct);
 
 router.put("/product/:id", authToken, authRole("admin"), updateProduct);
 
 router.delete("/product/:id", authToken, authRole("admin"), deleteProduct);
+
+router.put("/review", authToken, createAndUpdateReview);
 
 router.get("/reviews", getAllReviews);
 

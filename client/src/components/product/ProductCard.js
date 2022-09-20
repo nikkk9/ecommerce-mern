@@ -1,33 +1,32 @@
 import React from "react";
-import classes from "./ProductCard.module.css";
+import cls from "./ProductCard.module.css";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
-import RatingStars from "react-rating-stars-component";
+import { Rating } from "@mui/material";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className={classes.details}>
+    <div className={cls.details}>
       <img src={product.img} />
       <p>{product.title}</p>
-      <div className={classes.rating}>
-        <RatingStars
-          edit={false}
-          color="gray"
-          activeColor="tomato"
+      <div className={cls.rating}>
+        <Rating
+          precision={0.5}
+          size="medium"
           value={product.ratings}
-          isHalf={true}
-          size={25}
+          readOnly={true}
+          className={cls.ratingCompo}
         />
-        <span>({product.numOfReviews} reviews)</span>
+        <p>({product.numOfReviews} reviews)</p>
       </div>
       <p>{product.price} INR</p>
-      <div className={classes.icons}>
+      <div className={cls.icons}>
         <Link to="">
-          <ShoppingCartOutlinedIcon className={classes.icon} />
+          <ShoppingCartOutlinedIcon className={cls.icon} />
         </Link>
         <Link to={`/product/${product._id}`}>
-          <SearchIcon className={classes.icon} />
+          <SearchIcon className={cls.icon} />
         </Link>
       </div>
     </div>

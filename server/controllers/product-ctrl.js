@@ -1,12 +1,29 @@
 import Product from "../models/product-model.js";
 import ApiFeatures from "../utils/api-features.js";
+import cloudinary from "cloudinary";
 
 // CREATE PRODUCT
 export const createProduct = async (req, res) => {
   try {
-    req.body.userId = req.user._id;
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.img, {
+      folder: "products",
+    });
+    // req.body.userId = req.user._id;
 
-    const product = await Product.create(req.body);
+    const { title, price, desc, category, stock, img } = req.body;
+    if (!title || !price || !desc || !category || !stock || !img) {
+      return res.status(400).send("please fill all the fields");
+    }
+
+    const product = await Product.create({
+      userId: req.user._id,
+      title,
+      price,
+      desc,
+      category,
+      stock,
+      img: myCloud.url,
+    });
     if (!product) {
       return res.status(400).send("product is not added!");
     }
@@ -40,6 +57,8 @@ export const updateProduct = async (req, res) => {
 // DELETE PRODUCT
 export const deleteProduct = async (req, res) => {
   try {
+    // add delete image from cloudinary after delete code will be here
+
     const deletedProduct = await Product.findByIdAndDelete(req.params.id);
     if (!deletedProduct) {
       return res.status(400).send("product is not deleted!");
@@ -87,6 +106,19 @@ export const getAllProducts = async (req, res) => {
     res
       .status(200)
       .json({ products, totalProduct, productPerPage, filteredProductsCount });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// GET ALL PRODUCTS (ADMIN)
+export const getAdminProducts = async (req, res) => {
+  try {
+    const products = await Product.find();
+    if (!products) {
+      return res.status(400).send("products are not found!");
+    }
+    res.status(200).send(products);
   } catch (error) {
     console.log(error);
   }

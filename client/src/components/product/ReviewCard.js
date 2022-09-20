@@ -1,20 +1,17 @@
-import { Avatar } from "@mui/material";
+import { Avatar, Rating } from "@mui/material";
 import React from "react";
-import classes from "./ReviewCard.module.css";
-import RatingStars from "react-rating-stars-component";
+import cls from "./ReviewCard.module.css";
 
 const ReviewCard = ({ review }) => {
   return (
-    <div className={classes.reviewCard}>
+    <div className={cls.reviewCard}>
       <Avatar src="" />
       <p>{review.name}</p>
-      <RatingStars
-        edit={false}
-        color="gray"
-        activeColor="tomato"
+      <Rating
+        precision={0.5}
+        size="large"
         value={review.rating}
-        isHalf={true}
-        size={25}
+        readOnly={true}
       />
       <span>{review.comment}</span>
     </div>

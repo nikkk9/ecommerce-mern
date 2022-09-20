@@ -61,16 +61,26 @@
   margin-right: 3rem;
   cursor: pointer;
 }
+.menu {
+  padding: 1rem;
+}
+.menuItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.menuItem a {
+  color: unset;
+  text-decoration: none;
+}
 
 .cart {
   position: relative;
   padding-top: 0.5rem;
   cursor: pointer;
+  margin-right: 1.5rem;
 }
-.cartIcon {
-  font-size: 2rem;
-  color: teal;
-}
+
 .counter {
   position: absolute;
   left: 1rem;

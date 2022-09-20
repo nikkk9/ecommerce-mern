@@ -15,6 +15,7 @@ export const createOrder = async (req, res) => {
     } = req.body;
 
     const order = await Order.create({
+      userId: req.user._id,
       shippingInfo,
       orderItems,
       paymentInfo,
@@ -23,7 +24,6 @@ export const createOrder = async (req, res) => {
       shippingPrice,
       totalPrice,
       paidAt: Date.now(),
-      user: req.user._id,
     });
 
     if (!order) {
@@ -52,7 +52,7 @@ export const getAllOrders = async (req, res) => {
 export const getOrder = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id).populate(
-      "user",
+      "userId",
       "name email"
     );
     if (!order) {
@@ -101,7 +101,7 @@ export const updateOrder = async (req, res) => {
 
     if (req.body.orderStatus === "Shipped") {
       order.orderItems.forEach(async (o) => {
-        await updateStock(o.product, o.quantity);
+        await updateStock(o.pId, o.quantity);
       });
     }
     order.orderStatus = req.body.orderStatus;
