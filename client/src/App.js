@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Profile from "./components/user/Profile";
 import UpdateProfile from "./components/user/UpdateProfile";
@@ -35,7 +35,7 @@ import NotFound from "./components/layout/NotFound";
 import AuthRoute from "./components/route/AuthRoute";
 
 const App = () => {
-  const { authenticated, user } = useSelector((state) => state.user);
+  const { authenticated, user, fetching } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const [stripePK, setStripePK] = useState("");
@@ -55,57 +55,63 @@ const App = () => {
   return (
     <div className="app">
       <Routes>
-        <Route path="/" element={<Home />} />
-
-        <Route
-          path="/profile/update"
-          element={<AuthRoute Component={UpdateProfile} />}
-        />
-
+        {/* !authenticated route  */}
+        {<Route path="/" element={<Home />} />}
         <Route path="/login-signup" element={<LoginSignup />} />
         <Route path="/products" element={<Products />} />
         <Route path="/product/:id" element={<Product />} />
-        {authenticated && <Route path="/profile" element={<Profile />} />}
-        <Route
-          path="/password/update"
-          element={
-            authenticated ? <UpdatePass /> : <Navigate to="/login-signup" />
-          }
-        />
         <Route path="/password/forgot" element={<ForgotPass />} />
         <Route path="/reset-pass/:token" element={<ResetPass />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/shipping" element={<Shipping />} />
-        <Route path="/order/confirm" element={<ConfirmOrder />} />
-        {stripePK && (
-          <Route
-            exact
-            path="/process/payment"
-            element={
-              <Elements stripe={loadStripe(stripePK)}>
-                <Payment />
-              </Elements>
-            }
-          />
+
+        {/* authenticated route  */}
+
+        {fetching === false && (
+          <Route element={<AuthRoute isAuth={authenticated} />}>
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/update" element={<UpdateProfile />} />
+            <Route path="/password/update" element={<UpdatePass />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/shipping" element={<Shipping />} />
+            <Route path="/order/confirm" element={<ConfirmOrder />} />
+            <Route path="/payment/success" element={<SuccessOrder />} />
+            <Route path="/orders" element={<MyOrders />} />
+            <Route path="/order/:id" element={<OrderDetails />} />
+            {stripePK && (
+              <Route
+                exact
+                path="/process/payment"
+                element={
+                  <Elements stripe={loadStripe(stripePK)}>
+                    <Payment />
+                  </Elements>
+                }
+              />
+            )}
+          </Route>
         )}
-        <Route path="/payment/success" element={<SuccessOrder />} />
-        <Route path="/orders" element={<MyOrders />} />
-        <Route path="/order/:id" element={<OrderDetails />} />
-        {/* <Route path="/admin" element={<Admin />} /> */}
-        {/* <Route
-          path="/admin"
-          element={
-            user.role === "admin" ? <Admin /> : <Navigate to="/login-signup" />
-          }
-        /> */}
-        <Route path="/admin/products" element={<ProductList />} />
-        <Route path="/admin/create-product" element={<CreateProduct />} />
-        <Route path="/admin/product/:id" element={<UpdateProduct />} />
-        <Route path="/admin/orders" element={<OrderList />} />
-        <Route path="/admin/order/:id" element={<ProcessOrder />} />
-        <Route path="/admin/users" element={<UserList />} />
-        <Route path="/admin/user/:id" element={<UpdateUser />} />
-        <Route path="/admin/reviews" element={<ProductReviews />} />
+
+        {/* admin authenticated route  */}
+        {fetching === false && (
+          <Route
+            element={
+              <AuthRoute
+                isAuth={authenticated}
+                adminRoute={true}
+                isAdmin={user && user.role === "admin" ? true : false}
+              />
+            }
+          >
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/products" element={<ProductList />} />
+            <Route path="/admin/create-product" element={<CreateProduct />} />
+            <Route path="/admin/product/:id" element={<UpdateProduct />} />
+            <Route path="/admin/orders" element={<OrderList />} />
+            <Route path="/admin/order/:id" element={<ProcessOrder />} />
+            <Route path="/admin/users" element={<UserList />} />
+            <Route path="/admin/user/:id" element={<UpdateUser />} />
+            <Route path="/admin/reviews" element={<ProductReviews />} />
+          </Route>
+        )}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

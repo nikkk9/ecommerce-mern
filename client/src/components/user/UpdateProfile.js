@@ -72,43 +72,49 @@ const UpdateProfile = () => {
   }, [dispatch, error, updated, user, navigate]);
   return (
     <>
-      <Header />
-      <div className={cls.updateProfile}>
-        <div className={cls.container}>
-          <h2>Update Profile</h2>
-          <form
-            className={`${cls.form} ${cls.updateForm}`}
-            encType="multipart/form-data"
-          >
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <div className={cls.avatar}>
-              <img src={avatarPreview} alt="" />
-              <input
-                type="file"
-                name="avatar"
-                accept="image/*"
-                onChange={updateDataChange}
-              />
+      {fetching ? (
+        <Loader />
+      ) : (
+        <>
+          <Header />
+          <div className={cls.updateProfile}>
+            <div className={cls.container}>
+              <h2>Update Profile</h2>
+              <form
+                className={`${cls.form} ${cls.updateForm}`}
+                encType="multipart/form-data"
+              >
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <div className={cls.avatar}>
+                  <img src={avatarPreview} alt="" />
+                  <input
+                    type="file"
+                    name="avatar"
+                    accept="image/*"
+                    onChange={updateDataChange}
+                  />
+                </div>
+                <button type="submit" onClick={updateProfileHandler}>
+                  UPDATE
+                </button>
+              </form>
             </div>
-            <button type="submit" onClick={updateProfileHandler}>
-              UPDATE
-            </button>
-          </form>
-        </div>
-      </div>
+          </div>
+        </>
+      )}
     </>
   );
 };

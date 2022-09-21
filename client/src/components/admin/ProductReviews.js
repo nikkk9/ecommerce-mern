@@ -16,9 +16,7 @@ import Star from "@mui/icons-material/Star";
 const ProductReviews = () => {
   const dispatch = useDispatch();
 
-  const { error, reviews, fetching } = useSelector(
-    (state) => state.productReviews
-  );
+  const { error, reviews } = useSelector((state) => state.productReviews);
 
   const { error: deleteError, deleted } = useSelector(
     (state) => state.deleteReview

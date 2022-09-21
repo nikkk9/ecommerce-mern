@@ -33,7 +33,6 @@ export const userReducer = (state = { user: {} }, action) => {
         fetching: false,
         authenticated: false,
         user: null,
-        // error: action.payload,
       };
 
     case "LOGOUT_SUCCESS":
@@ -166,29 +165,28 @@ export const forgotPassReducer = (state = {}, action) => {
   }
 };
 
-
 export const allUsersReducer = (state = { users: [] }, action) => {
   switch (action.type) {
-    case 'ALL_USERS_REQUEST':
+    case "ALL_USERS_REQUEST":
       return {
         ...state,
         fetching: true,
       };
-    case 'ALL_USERS_SUCCESS':
+    case "ALL_USERS_SUCCESS":
       return {
         ...state,
         fetching: false,
         users: action.payload,
       };
 
-    case 'ALL_USERS_FAIL':
+    case "ALL_USERS_FAIL":
       return {
         ...state,
         fetching: false,
         error: action.payload,
       };
 
-    case 'CLEAR_ERRORS':
+    case "CLEAR_ERRORS":
       return {
         ...state,
         error: null,
@@ -201,26 +199,26 @@ export const allUsersReducer = (state = { users: [] }, action) => {
 
 export const userDetailsReducer = (state = { user: {} }, action) => {
   switch (action.type) {
-    case 'USER_DETAILS_REQUEST':
+    case "USER_DETAILS_REQUEST":
       return {
         ...state,
         fetching: true,
       };
-    case 'USER_DETAILS_SUCCESS':
+    case "USER_DETAILS_SUCCESS":
       return {
         ...state,
         fetching: false,
         user: action.payload,
       };
 
-    case 'USER_DETAILS_FAIL':
+    case "USER_DETAILS_FAIL":
       return {
         ...state,
         fetching: false,
         error: action.payload,
       };
 
-    case 'CLEAR_ERRORS':
+    case "CLEAR_ERRORS":
       return {
         ...state,
         error: null,

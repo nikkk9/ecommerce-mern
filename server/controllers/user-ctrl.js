@@ -25,12 +25,14 @@ export const signupUser = async (req, res) => {
       email: email,
       password: hashPass,
       avatar: {
-        // public_id: "111",
-        // url: "https://upload.wikimedia.org/wikipedia/en/2/2f/Jerry_Mouse.png",
         public_id: myCloud.public_id,
         url: myCloud.secure_url,
       },
     });
+
+    if (!user) {
+      return res.status(400).send("user signup failed!");
+    }
 
     // GENERATE TOKEN
     const accessToken = user.genToken();
@@ -40,10 +42,6 @@ export const signupUser = async (req, res) => {
       expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
       httpOnly: true,
     });
-
-    if (!user) {
-      return res.status(400).send("user signup failed!");
-    }
     res.status(200).send({ user, accessToken });
   } catch (error) {
     console.log(error);
@@ -66,6 +64,9 @@ export const loginUser = async (req, res) => {
     }
     const userPassword = await userExist.comparePassword(inputPassword);
 
+    if (!userPassword) {
+      return res.status(400).send("invalid credentials!");
+    }
     // GENERATE TOKEN
     const accessToken = userExist.genToken();
 
@@ -77,10 +78,6 @@ export const loginUser = async (req, res) => {
 
     //   HIDING PASSWORD
     const { password, ...userlog } = userExist._doc;
-
-    if (!userPassword) {
-      return res.status(400).send("invalid credentials!");
-    }
     res.status(200).send({ ...userlog, accessToken });
   } catch (error) {
     console.log(error);

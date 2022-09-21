@@ -26,6 +26,7 @@
   font-size: 1rem;
   background: none;
   color: rgb(0, 255, 17);
+  border: 1px solid rgb(0, 255, 17);
   cursor: url("https://img.icons8.com/color/48/000000/edit--v2.png"), pointer;
 }
 

@@ -7,7 +7,7 @@ import Header from "../layout/Header";
 const ForgotPass = () => {
   const dispatch = useDispatch();
 
-  const { error, msg, loading } = useSelector((state) => state.forgotPass);
+  const { error, msg } = useSelector((state) => state.forgotPass);
 
   const [email, setEmail] = useState("");
 
@@ -28,7 +28,7 @@ const ForgotPass = () => {
     if (msg) {
       alert(msg);
     }
-  }, [dispatch, error, alert, msg]);
+  }, [dispatch, error, msg]);
   return (
     <>
       <Header />

@@ -1,5 +1,5 @@
 import React from "react";
-import { Step, StepLabel, Stepper, Typography } from "@mui/material";
+import { Step, StepLabel, Stepper } from "@mui/material";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";

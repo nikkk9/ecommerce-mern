@@ -32,7 +32,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <p>&copy; 2022 FOOD-ZONE. All Rights Reserved.</p>
+      <p>&copy; 2022 ECOMM-APP. All Rights Reserved.</p>
     </div>
   );
 };

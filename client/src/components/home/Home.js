@@ -20,26 +20,28 @@ const Home = () => {
 
     // if you are not using extra arrow function in action file of redux then you have to use
     // dispatch(getProducts)
-  }, [dispatch]);
+  }, [error,dispatch]);
   return (
-    <div>
-      <Header />
-      <Slider />
-
+    <>
       {fetching ? (
         <Loader />
       ) : (
-        <div className={cls.product} id="products-sec">
-          <h1>ORDER YOUR FAVOURITE PRODUCTS</h1>
-          <div className={cls.container}>
-            {products.map((p) => {
-              return <ProductCard key={p._id} product={p} />;
-            })}
+        <>
+          <Header />
+          <Slider />
+
+          <div className={cls.product} id="products-sec">
+            <h1>ORDER YOUR FAVOURITE PRODUCTS</h1>
+            <div className={cls.container}>
+              {products.map((p) => {
+                return <ProductCard key={p._id} product={p} />;
+              })}
+            </div>
           </div>
-        </div>
+          <Footer />
+        </>
       )}
-      <Footer />
-    </div>
+    </>
   );
 };
 

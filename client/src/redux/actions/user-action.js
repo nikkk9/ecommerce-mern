@@ -25,7 +25,7 @@ export const signupUser = (userData) => async (dispatch) => {
 
     const { data } = await axios.post("/signup", userData, config);
 
-    dispatch({ type: "SIGNUP_SUCCESS", payload: data });
+    dispatch({ type: "SIGNUP_SUCCESS", payload: data.user });
   } catch (error) {
     dispatch({
       type: "SIGNUP_FAIL",

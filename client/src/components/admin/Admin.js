@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import cls from "./Admin.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getAdminProducts } from "../../redux/actions/product-action";
 import Leftbar from "./Leftbar";
 import MetaData from "../layout/MetaData";
