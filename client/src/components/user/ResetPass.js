@@ -7,7 +7,7 @@ import Loader from "../loader/Loader";
 import Header from "../layout/Header";
 
 const ResetPass = () => {
-  const { success, error, fetching } = useSelector((state) => state.forgotPass);
+  const { success, error } = useSelector((state) => state.forgotPass);
 
   const dispatch = useDispatch();
 

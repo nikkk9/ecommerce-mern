@@ -4,7 +4,6 @@ import User from "../models/user-model.js";
 export const authToken = async (req, res, next) => {
   // console.log(req.cookies);
   const token = req.cookies.jwtoken;
-
   if (!token) {
     return res.status(400).send("token not found");
   }

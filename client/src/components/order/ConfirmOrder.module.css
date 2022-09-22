@@ -1,5 +1,6 @@
 .confirmOrder {
   display: flex;
+  padding-top: 2rem;
 }
 
 .left {
@@ -43,12 +44,10 @@
 
 .confirmCartItems {
   padding: 5rem;
-  padding-top: 2rem;
 }
 
 .confirmCartItemsContainer {
   max-height: 20rem;
-  overflow-y: auto;
 }
 
 .confirmCartItemsContainer > div {
@@ -60,7 +59,8 @@
 }
 
 .confirmCartItemsContainer > div > img {
-  width: 3rem;
+  height: 5rem;
+  width: 5rem;
 }
 
 .confirmCartItemsContainer > div > a {
@@ -125,4 +125,31 @@
 .orderSummaryDetails div {
   display: flex;
   align-items: center;
+}
+@media (max-width: 850px) {
+  .confirmOrder {
+    flex-direction: column;
+  }
+  .left {
+    border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+  }
+  .right {
+    margin: 0;
+  }
+}
+@media (max-width: 500px) {
+  .confirmShippingArea > p,
+  .confirmCartItems > p,
+  .orderSummary > p {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 480px) {
+  .orderSummary {
+    padding: 3rem;
+  }
+  .confirmShippingArea,
+  .confirmCartItems {
+    padding: 2rem;
+  }
 }

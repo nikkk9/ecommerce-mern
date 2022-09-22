@@ -48,7 +48,7 @@ const ConfirmOrder = () => {
       <div className={cls.confirmOrder}>
         <div className={cls.left}>
           <div className={cls.confirmShippingArea}>
-            <Typography>Shipping Info</Typography>
+            <Typography>Shipping Info:</Typography>
             <div className={cls.confirmShippingAreaBox}>
               <div>
                 <p>Name:</p>

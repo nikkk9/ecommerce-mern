@@ -156,3 +156,68 @@
   margin: 1rem 0;
   font: 1rem "Roboto";
 }
+
+@media (max-width: 890px) {
+  .left img {
+    height: 60%;
+  }
+  .right h1 {
+    font-size: 1.5rem;
+  }
+  .price b {
+    font-size: 1.1rem;
+  }
+  .price p {
+    font-size: 1rem;
+  }
+  .add button {
+    font-size: 0.6rem;
+  }
+  .add input {
+    font-size: 0.7rem;
+    padding: 0rem;
+  }
+}
+@media (max-width: 825px) {
+  .right {
+    flex: 1;
+  }
+  .left {
+    flex: 1;
+    width: 100%;
+  }
+}
+@media (max-width: 680px) {
+  .product {
+    height: 100%;
+  }
+  .container {
+    flex-direction: column;
+    align-items: center;
+    margin: 3rem 0;
+  }
+  .left img {
+    height: 20rem;
+  }
+  .right {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .product h2,
+  .reviewContainer h2 {
+    font-size: 1rem;
+  }
+  .cartBtn {
+    margin-left: 1rem;
+  }
+}
+@media (max-width: 325px) {
+  .right h1 {
+    font-size: 1.2rem;
+  }
+  .price b {
+    font-size: 1rem;
+  }
+}

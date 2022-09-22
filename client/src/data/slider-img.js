@@ -17,7 +17,7 @@ const sliderImg = [
   {
     id: 3,
     img: img3,
-    title: "DESIGNER BLAZER",
+    title: "BLAZERS",
     bg: "lightgray",
   },
 ];

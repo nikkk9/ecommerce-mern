@@ -72,6 +72,9 @@ export const loginUser = async (req, res) => {
 
     // STORE TOKEN IN COOKIE
     res.cookie("jwtoken", accessToken, {
+      // for 10 seconds
+      // expires: new Date(Date.now() + 10 * 1000),
+      // for 3 days
       expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
       httpOnly: true,
     });

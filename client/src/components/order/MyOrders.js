@@ -5,7 +5,7 @@ import cls from "./MyOrders.module.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, getMyOrders } from "../../redux/actions/order-action";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Typography } from "@mui/material";
 import LaunchIcon from "@mui/icons-material/Launch";
 import Loader from "../loader/Loader";
@@ -72,6 +72,8 @@ const MyOrders = () => {
         amount: item.totalPrice,
       });
     });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (error) {

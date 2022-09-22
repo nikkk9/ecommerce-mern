@@ -95,3 +95,34 @@
   height: 1rem;
   width: 1rem;
 }
+
+@media (max-width: 1070px) {
+  .mid {
+    display: none;
+  }
+}
+@media (max-width: 500px) {
+  .right a:nth-child(1) {
+    display: none;
+  }
+  .left a {
+    font-size: 0.8rem;
+  }
+  .cartIcon {
+    font-size: 1.5rem !important;
+  }
+  .counter {
+    height: 0.7rem;
+    width: 0.7rem;
+    font-size: 0.6rem;
+    top: -0.1rem;
+    left: 0.8rem;
+  }
+  .avatar {
+    height: 2rem !important;
+    width: 2rem !important;
+  }
+  .right {
+    margin-right: 1rem;
+  }
+}

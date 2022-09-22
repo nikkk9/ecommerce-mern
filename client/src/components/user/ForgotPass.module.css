@@ -5,20 +5,12 @@
   justify-content: center;
   height: calc(100vh - 4rem);
   width: 100%;
-  background-image: linear-gradient(
-    to right top,
-    #554aff,
-    #0092ff,
-    #00b8ff,
-    #00d2b0,
-    #00e349
-  );
+  background-color: rgb(189, 255, 240);
 }
 .container {
-  background-color: rgba(0, 0, 0, 0.1);
   padding: 3rem 5rem;
   width: 25rem;
-  height: 30vh;
+  height: 40vh;
 }
 .container h2 {
   text-align: center;
@@ -31,7 +23,6 @@
   flex-direction: column;
   align-items: center;
   margin-top: 4rem;
-  width: 25rem;
   transition: 0.5s ease;
 }
 
@@ -39,15 +30,11 @@
   padding: 0.7rem 1rem;
   background: none;
   border: none;
-  border-bottom: 1px solid rgb(240, 248, 255, 0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   margin-bottom: 1rem;
-  color: aliceblue;
   outline: none;
   font-size: 1.1rem;
   width: 100%;
-}
-.form ::-webkit-input-placeholder {
-  color: aliceblue;
 }
 
 .form button {
@@ -80,4 +67,27 @@
 }
 .forgotForm input[type="file"] {
   color: transparent;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 20rem;
+  }
+}
+@media (max-width: 500px) {
+  .container {
+    width: 15rem;
+  }
+}
+@media (max-width: 420px) {
+  .container {
+    width: 12rem;
+  }
+  .container h2 {
+    font-size: 1.5rem;
+  }
+  .form button,
+  .form input {
+    font-size: 0.8rem;
+  }
 }

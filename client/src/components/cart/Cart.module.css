@@ -106,3 +106,47 @@
   margin-top: 1rem;
   color: teal;
 }
+
+@media (max-width: 1000px) {
+  .grossTotal {
+    width: 80%;
+    right: 5rem;
+    margin-top: 2rem;
+  }
+  .checkoutBtn button {
+    width: 100%;
+  }
+  .cartInput button {
+    padding: 0.5rem 0.7rem;
+  }
+  .cartInput input {
+    padding: 0rem;
+    height: 2rem;
+  }
+}
+@media (max-width: 650px) {
+  .grossTotal {
+    right: 3rem;
+    margin-top: 5rem;
+  }
+}
+@media (max-width: 500px) {
+  .header p {
+    font-size: 0.8rem;
+  }
+  .cartInput button {
+    padding: 0.5rem;
+  }
+  .cartInput input {
+    height: 2rem;
+    width: 1.5rem;
+  }
+  .subtotal {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 415px) {
+  .grossTotal {
+    right: 2rem;
+  }
+}

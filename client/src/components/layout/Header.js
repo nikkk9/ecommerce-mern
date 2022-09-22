@@ -82,6 +82,7 @@ const Header = () => {
               <Link to="/cart">
                 <div className={cls.cart}>
                   <ShoppingCartOutlinedIcon
+                    className={cls.cartIcon}
                     style={{
                       fontSize: "2rem",
                       color: cartItems.length > 0 ? "teal" : "unset",
@@ -98,7 +99,7 @@ const Header = () => {
                 aria-expanded={open ? "true" : undefined}
                 onClick={handleClick}
               >
-                <Avatar src={user.avatar.url} />
+                <Avatar src={user.avatar.url} className={cls.avatar} />
               </Button>
               <Menu
                 id="basic-menu"
@@ -115,6 +116,9 @@ const Header = () => {
                   </MenuItem>
                   <MenuItem className={cls.menuItem}>
                     <Link to="/orders">Orders</Link>
+                  </MenuItem>
+                  <MenuItem className={cls.menuItem}>
+                    <Link to="/products">Products</Link>
                   </MenuItem>
 
                   {user.role === "admin" && (

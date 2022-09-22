@@ -10,7 +10,7 @@
   padding: 3rem 5rem;
   width: 25rem;
   height: 70vh;
-  margin-top: 2rem;
+  margin: 2rem 0;
 }
 .container h2 {
   text-align: center;
@@ -23,7 +23,6 @@
   flex-direction: column;
   align-items: center;
   margin-top: 4rem;
-  width: 25rem;
   transition: 0.5s ease;
 }
 
@@ -69,4 +68,32 @@
 }
 .updateForm input[type="file"] {
   color: transparent;
+}
+@media (max-width: 600px) {
+  .container {
+    width: 20rem;
+    background-color: unset;
+  }
+}
+@media (max-width: 500px) {
+  .container {
+    width: 17rem;
+  }
+  .container h2 {
+    font-size: 1.5rem;
+  }
+  .form input,
+  .form select {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 430px) {
+  .container {
+    width: 12rem;
+  }
+}
+@media (max-width: 340px) {
+  .container {
+    width: 10rem;
+  }
 }

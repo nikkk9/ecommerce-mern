@@ -33,3 +33,42 @@
   color: tomato;
   cursor: pointer;
 }
+@media (max-width: 930px) {
+  .cartItemCard div {
+    margin-left: 1rem;
+  }
+}
+@media (max-width: 750px) {
+  .cartItemCard div {
+    margin-left: 0.5rem;
+  }
+  .cartItemCard div a {
+    font-size: 1.2rem;
+  }
+  .cartItemCard div h3 {
+    font-size: 0.8rem;
+  }
+  .cartItemCard div p {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 650px) {
+  .cartItemCard img {
+    height: 5rem;
+    width: 5rem;
+  }
+  .cartItemCard {
+    padding: 0;
+  }
+}
+@media (max-width: 550px) {
+  .cartItemCard div a {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 415px) {
+  .cartItemCard img {
+    height: 3rem;
+    width: 3rem;
+  }
+}

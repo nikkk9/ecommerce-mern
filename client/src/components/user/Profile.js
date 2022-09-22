@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import MetaData from "../layout/MetaData";
 import cls from "./Profile.module.css";
 import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.user);
@@ -35,6 +36,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

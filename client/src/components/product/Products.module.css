@@ -102,3 +102,9 @@
 .catgBox li:hover {
   color: tomato;
 }
+
+@media (max-width: 500px) {
+  .products h2 {
+    font-size: 1rem;
+  }
+}

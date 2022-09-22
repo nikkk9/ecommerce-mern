@@ -8,7 +8,7 @@ export const loginUser = (email, password) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.post("/login", { email, password }, config);
-    console.log(data);
+    // console.log(data);
 
     dispatch({ type: "LOGIN_SUCCESS", payload: data });
   } catch (error) {

@@ -20,7 +20,7 @@ const Home = () => {
 
     // if you are not using extra arrow function in action file of redux then you have to use
     // dispatch(getProducts)
-  }, [error,dispatch]);
+  }, [error, dispatch]);
   return (
     <>
       {fetching ? (

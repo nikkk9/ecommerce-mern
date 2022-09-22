@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import cls from "./LoginSignup.module.css";
-// .css file for switch the tab of login/signup component
-import "./LoginSignupSwitch.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearErrors,
@@ -78,18 +76,18 @@ const LoginSignup = () => {
 
   const switchTabHandler = (e, tab) => {
     if (tab === "login") {
-      switchTab.current.classList.add("shiftToNeutral");
-      switchTab.current.classList.remove("shiftToRight");
+      switchTab.current.classList.add(cls.neutral);
+      switchTab.current.classList.remove(cls.switchRight);
 
-      registerTab.current.classList.remove("shiftToNeutralForm");
-      loginTab.current.classList.remove("shiftToLeft");
+      registerTab.current.classList.remove(cls.neutral);
+      loginTab.current.classList.remove(cls.formLeft);
     }
     if (tab === "register") {
-      switchTab.current.classList.add("shiftToRight");
-      switchTab.current.classList.remove("shiftToNeutral");
+      switchTab.current.classList.add(cls.switchRight);
+      switchTab.current.classList.remove(cls.neutral);
 
-      registerTab.current.classList.add("shiftToNeutralForm");
-      loginTab.current.classList.add("shiftToLeft");
+      registerTab.current.classList.add(cls.neutral);
+      loginTab.current.classList.add(cls.formLeft);
     }
   };
 
